@@ -1,5 +1,3 @@
-![MINI3 - A naked barebone PHP application](_install/mini3.png)
-
 # MINI3
 
 MINI3 is an extremely simple and easy to understand skeleton PHP application, reduced to the max.
@@ -7,10 +5,6 @@ MINI3 is NOT a professional framework and does not come with all the stuff real 
 If you just want to show some pages, do a few database calls and a little-bit of AJAX here and there, without
 reading in massive documentations of highly complex professional frameworks, then MINI3 might be very useful for you.
 MINI3 is easy to install, runs nearly everywhere and doesn't make things more complicated than necessary.
-
-
-[MINI](https://github.com/panique/mini) (original version) and [MINI2](https://github.com/panique/mini2) (used Slim router) were built by me (panique), MINI3 is an excellent and improved version
-of the original MINI, made by [JaoNoctus](https://github.com/JaoNoctus). Big thanks, man! :)
 
 ## Features
 
@@ -21,66 +15,14 @@ of the original MINI, made by [JaoNoctus](https://github.com/JaoNoctus). Big tha
 - demo AJAX call
 - tries to follow PSR coding guidelines
 - uses PDO for any database requests, comes with an additional PDO debug tool to emulate your SQL statements
-- commented code
 - uses only native PHP code, so people don't have to learn a framework
 - uses PSR-4 autoloader
 
-## Requirements (but it's auto-installed)
+## Requirements
 
 - PHP 8
 - MySQL
-- basic knowledge of Composer for sure
-- for auto-installation: VirtualBox, Vagrant
-
-## Forks
-
-There are some nice upgraded versions of this mini framework, check it out at https://github.com/ribafs/php-router
-
-## Installation (in Vagrant, 100% automatic)
-
-To keep things super-simple, we are using Vagrant here, a simple technology to run virtual machines for development.
-It's outdated, but does the job, and is much easier to understand than Docker. Just install VirtualBox, Vagrant, then
-copy this repo's code to a folder, go to that folder and type:
-
-```bash
-vagrant up
-```
-
-This will create a virtual machine with the configs given in `Vagrantfile`: It will create an Ubuntu 2022.04 Jammy64
-VM with 1024MB RAM, sync the current folder to `/var/www/html` inside the VM, make the VM available on the IP
-`192.168.56.77` and start the bash script `bootstrap.sh`, which is just a set of commands that will install all 
-necessary software.
-
-If the auto-installer is finished, go to http://192.168.56.77 in your browser and click around a bit ;)
-
-# OLD INSTALLATION TUTORIALS FROM 2016
-
-Below you'll find installation tutorial for the old version of MINI3 from 2016.
-
-## Installation (in Vagrant, 100% automatic)
-
-If you are using Vagrant for your development, then you can install MINI3 with one click (or one command on the
-command line) [[Vagrant doc](https://docs.vagrantup.com/v2/getting-started/provisioning.html)]. MINI3 comes with a demo
-Vagrant-file (defines your Vagrant box) and a demo bootstrap.sh which automatically installs Apache, PHP, MySQL,
-PHPMyAdmin, git and Composer, sets a chosen password in MySQL and PHPMyadmin and even inside the application code,
-downloads the Composer-dependencies, activates mod_rewrite and edits the Apache settings, downloads the code from GitHub
-and runs the demo SQL statements (for demo data). This is 100% automatic, you'll end up after +/- 5 minutes with a fully
-running installation of MINI3 inside an Ubuntu 14.04 LTS Vagrant box.
-
-To do so, put `Vagrantfile` and `bootstrap.sh` from `_vagrant` inside a folder (and nothing else).
-Do `vagrant box add ubuntu/trusty64` to add Ubuntu 14.04 LTS ("Trusty Thar") 64bit to Vagrant (unless you already have
-it), then do `vagrant up` to run the box. When installation is finished you can directly use the fully installed demo
-app on `192.168.33.66`. As this just a quick demo environment the MySQL root password and the PHPMyAdmin root password
-are set to `12345678`, the project is installed in `/var/www/html/myproject`. You can change this for sure inside
-`bootstrap.sh`.
-
-## Auto-Installation on Ubuntu 14.04 LTS (in 30 seconds)
-
-You can install MINI3 including Apache, MySQL, PHP and PHPMyAdmin, mod_rewrite, Composer, all necessary settings and
-even the passwords inside the configs file by simply downloading one file and executing it, the entire installation
-will run 100% automatically. If you are stuck somehow, also have a look into this tutorial for the original MINI1,
-it's basically the same installation process:
-[Install MINI in 30 seconds inside Ubuntu 14.04 LTS](http://www.dev-metal.com/install-mini-30-seconds-inside-ubuntu-14-04-lts/)
+- basic knowledge of Composer 
 
 ## Manual Installation
 
@@ -181,11 +123,6 @@ echo Helper::debugPDO($sql, $parameters);
 
 $query->execute($parameters);
 ```
-
-## License
-
-This project is licensed under the MIT License.
-This means you can use and modify it for free in private or commercial projects.
 
 ## Quick-Start
 
@@ -355,11 +292,3 @@ Please commit into the develop branch (which holds the in-development version), 
 
 **January 2014**
 - [panique] fixed .htaccess issue when there's a controller named "index" and a base index.php (which collide)
-
-## Other stuff
-
-And by the way, I'm also blogging at [Dev Metal](http://www.dev-metal.com) :)
-
-## Support the project
-
-<a href="https://www.buymeacoffee.com/panique" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
