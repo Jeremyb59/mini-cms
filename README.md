@@ -28,51 +28,11 @@ MINI3 is easy to install, runs nearly everywhere and doesn't make things more co
 
 1. Edit the database credentials in `application/config/config.php`
 2. Execute the .sql statements in the `_install/`-folder (with PHPMyAdmin for example).
-3. Make sure you have mod_rewrite activated on your server / in your environment. Some guidelines:
-   [Ubuntu 14.04 LTS](http://www.dev-metal.com/enable-mod_rewrite-ubuntu-14-04-lts/),
-   [Ubuntu 12.04 LTS](http://www.dev-metal.com/enable-mod_rewrite-ubuntu-12-04-lts/),
-   [EasyPHP on Windows](http://stackoverflow.com/questions/8158770/easyphp-and-htaccess),
-   [AMPPS on Windows/Mac OS](http://www.softaculous.com/board/index.php?tid=3634&title=AMPPS_rewrite_enable/disable_option%3F_please%3F),
-   [XAMPP for Windows](http://www.leonardaustin.com/blog/technical/enable-mod_rewrite-in-xampp/),
-   [MAMP on Mac OS](http://stackoverflow.com/questions/7670561/how-to-get-htaccess-to-work-on-mamp)
-4. Install composer and run `composer install` in the project's folder to create the PSR-4 autoloading stuff from Composer automatically.
-   If you have no idea what this means: Remember the "good" old times when we were using "include file.php" all over our projects to include and use something ?
-   PSR-0/4 is the modern, clean and automatic version of that. Please have a google research if that's important for you.  
-   
-Feel free to commit your guideline for Ubuntu 16.04 LTS or other linuxes to the list!  
+3. Make sure you have mod_rewrite activated on your server / in your environment.
+4. Install composer and run `composer install` in the project's folder to create the PSR-4 autoloading stuff from Composer automatically. 
 
 MINI3 runs without any further configuration. You can also put it inside a sub-folder, it will work without any
 further configuration.
-Maybe useful: A simple tutorial on [How to install LAMPP (Linux, Apache, MySQL, PHP, PHPMyAdmin) on Ubuntu 14.04 LTS](http://www.dev-metal.com/installsetup-basic-lamp-stack-linux-apache-mysql-php-ubuntu-14-04-lts/)
-and [the same for Ubuntu 12.04 LTS](http://www.dev-metal.com/setup-basic-lamp-stack-linux-apache-mysql-php-ubuntu-12-04/).
-
-## Server configs for
-
-### nginx
-
-```nginx
-server {
-    server_name default_server _;   # Listen to any servername
-    listen      [::]:80;
-    listen      80;
-
-    root /var/www/html/myproject/public;
-
-    location / {
-        index index.php;
-        try_files /$uri /$uri/ /index.php?url=$uri;
-    }
-
-    location ~ \.(php)$ {
-        fastcgi_pass   unix:/var/run/php5-fpm.sock;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-}
-```
-
-A deeper discussion on nginx setups can be found [here](https://github.com/panique/mini/issues/55).
 
 ## Security
 
@@ -222,73 +182,3 @@ inside the view files (in this case application/views/songs/index.php, in a simp
 <?php } ?>
 </tbody>
 ```
-
-## Contribute
-
-Please commit into the develop branch (which holds the in-development version), not into master branch
-(which holds the tested and stable version).
-
-## Changelog
-
-**August 2016**
-
-- [panique] fix for weird lowercase/uppercase path problem (also big thanks to @snickbit & @ugurozturk for the fix!)
-- [panique] forking joanoctus's excellent PSR4 ersion of MINI to MINI3
-
-**January 2016**
-
-- [joanoctus] implementing PSR-4 autoloader
-
-**February 2015**
-
-- [jeroenseegers] nginx setup configuration
-
-**December 2014**
-- [panique] css fixes
-- [panique] renamed controller / view to singular
-- [panique] added charset to PDO creation (increased security)
-
-**November 2014**
-- [panique] auto-install script for Vagrant
-- [panique] basic documentation
-- [panique] PDO-debugger is now a static helper-method, not a global function anymore
-- [panique] folder renaming
-- [reg4in] JS AJAX calls runs now properly even when using script in sub-folder
-- [panique] removed all "models", using one model file now
-- [panique] full project renaming, re-branding
-
-**October 2014**
-- [tarcnux/panique] PDO debugging
-- [panique] demo ajax call
-- [panique] better output escaping
-- [panique] renamed /libs to /core
-- [tarcnux] basic CRUD (create/read/update/delete) examples have now an U (update)
-- [panique] URL is now config-free, application detects URL and sub-folder
-- [elysdir] htaccess has some good explanation-comments now
-- [bst27] fallback for non-existing controller / method
-- [panique] fallback will show error-page now
-- [digitaltoast] URL split fix to make php-mvc work flawlessly on nginx
-- [AD7six] security improvement: moved index.php to /public, route ALL request to /public
-
-**September 2014**
-- [panique] added link to support forum
-- [panique] added link to Facebook page
-
-**August 2014**
-- [panique] several changes in the README, donate-button changes
-
-**June 2014**
-- [digitaltoast] removed X-UA-Compatible meta tag from header (as it's not needed anymore these days)
-- [digitaltoast] removed protocol in jQuery URL (modern way to load external files, making it independent to protocol change)
-- [digitaltoast] downgraded jQuery from 2.1 to 1.11 to avoid problems when working with IE7/8 (jQuery 2 dropped IE7/8 support)
-- [panique] moved jQuery loading to footer (to avoid page render blocking)
-
-**April 2014**
-- [panique] updated jQuery link to 2.1
-- [panique] more than 3 parameters (arguments to be concrete) are possible
-- [panique] cleaner way of parameter handling
-- [panique] smaller cleanings and improvements
-- [panique] Apache 2.4 install information
-
-**January 2014**
-- [panique] fixed .htaccess issue when there's a controller named "index" and a base index.php (which collide)
