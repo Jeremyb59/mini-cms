@@ -1,7 +1,6 @@
 <div class="container">
     <h1>Songs</h1>
     <h2>You are in the View: application/view/song/index.php (everything in this box comes from that file)</h2>
-    <!-- add song form -->
     <div class="box">
         <h3>Add a song</h3>
         <form action="<?php echo URL; ?>songs/addsong" method="POST">
@@ -14,7 +13,6 @@
             <input type="submit" name="submit_add_song" value="Submit" />
         </form>
     </div>
-    <!-- main content output -->
     <div class="box">
         <h3>Amount of songs: <?php echo $amount_of_songs; ?></h3>
         <h3>Amount of songs (via AJAX)</h3>
